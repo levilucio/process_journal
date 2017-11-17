@@ -67,7 +67,7 @@ grestore
 
 \usepackage[final,pdftex]{graphicx}
         \pdfcompresslevel=9
-        \DeclareGraphicsExtensions{.png} 
+        \DeclareGraphicsExtensions{.png .pdf} 
 
 \usepackage{chngcntr}
 \usepackage{epsfig} 
@@ -153,7 +153,7 @@ model-driven requirements gathering environment for our industrial partners.
 % \subclass{MSC code1 \and MSC code2 \and more}
 \end{abstract}
 
-\section{Introduction}
+\input{text/introduction}
 
 Introduce the problem statement here, something along the following
 lines: 
@@ -165,9 +165,7 @@ lines:
   regarding the modelling experience.
 \end{itemize} 
 
-\section{A conceptual frame for building Process-Aware Model-Driven Development
-environments}
-\input{text/mdd_frame}
+\input{text/conceptual_process_frame} 
 
 \section{Case Studies: The MPS and the AutoFOCUS MDD Environments}
 \input{text/case_studies}
