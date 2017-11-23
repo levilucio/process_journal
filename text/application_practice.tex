@@ -2,28 +2,33 @@
 
 \subsection{\doone\ in \afthree}
 
-The standard \doone~\cite{do178c} is the primary document by which the certification authorities approve all commercial software-based aerospace systems.
+The \doone\ standard~\cite{do178c} is the primary document by which the certification authorities approve all commercial software-based aerospace systems.
 It requires a thorough definition and documentation of the software development process. 
-The base set of required documentation and life cycle artifacts includes software requirements standard, software design standard and traceability.
-\dothree\ supplements \doone\ with model-based development guidance.
-The process described in this section guides the users (requirement engineer and architect) to generate models (requirements and their corresponding design) to fulfill some of the standards imposed by \doone\ and \dothree.
+The base set of required documentation includes requirements standard, design standard and traceability.
+The \dothree\ standard supplements \doone\ with model-based development guidance.
+Both standards define what needs to be done (the objectives that the project must fulfill), but they do not specify how to do so (they do not define a process) .
+It is up to the process engineer of each project to define the actual process and document how objectives are achieved.
+In this section we describe one such a process and show how it can be implemented in \afthree.
+The process guides the requirement engineer and architect to generate requirements and their corresponding design to fulfill some of the standards imposed by \doone\ and \dothree.
 
-Good requirements standards should guarantee that the requirements information (ID, name, description, rationale, author, etc) is complete.
-Also, HLRs should be traceable to SRs.
-Once requirements are completed, they need to be reviewed (by someone which did not participate in their development).
-According to \dothree, artifacts and communication channels should have meaningful names, ports should have a type and a range, etc.
-\doone\ also imposes traceability between design and HLR.
-This allows to guarantee e.g. that every HLR is implemented.
+Requirements standards required by \doone\ normally impose that information about requirements (ID, name, description, rationale, author, etc) is complete.
+Traceability requires that every HLR is related to a SRs.
+Once requirements are completed, they need to be reviewed and approved by someone which did not participate in their development. 
+The latter guarantees verification independence~\cite{cast26} which must be clearly documented.
+According to \dothree, artifacts and their communication channels should have meaningful names, ports should have a type and a range, etc.
+Traceability also requires that every artifact in the design shall be traced to a HLR.
 
-We show how the process described above can be implemented in \afthree\ using constraints.
+We show how the objectives mentioned above can be achieved following our proposed development process.
+Objectives are implemented in \afthree\ using constraints.
 The first objective is to add requirements to the project. 
 Once this is done, two objectives become possible and can be performed in any order. 
 \emph{Requirements information complete} assures that the ID, name, description, rationale, author and source (SR from where this requirement is derived) fields are completed. 
-The latter defines a trace between HLRs and SRs.
-\emph{Requirements have an unique aspect} guides the engineer to split a requirement when it focus on more than a particular aspect.
-Consider a requirement `\emph{the value of $o_1$ should be computed as $i_1$ in less than time units}'.
-This requirement contains a functional aspect (how to compute the value of $o_1$) and a timing aspect (how fast this should be computed).
-We believe it is good practice to have both as separated requirements; the process guide the user to do so.
+The latter defines traces between HLRs and SRs.
+\emph{Requirements have an unique aspect} guides the engineer to refine a requirement when it focus on more than a particular aspect.
+Consider the following requirement: `\emph{the value of output $o_1$ is the value of input $i_1$ plus 1 and should be computed in less than 5 time units}'.
+This requirement contains a functional aspect (how to compute the value of $o_1$) and a timing aspect (what the performance of the computation should be).
+Since they refer to different aspects, it is good practice to have both as separated requirements.
+The proposed process guides the user to do so.
 
 \subsection{IETS3 in MPS}
 
