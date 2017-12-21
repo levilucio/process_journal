@@ -49,15 +49,16 @@ is specific to avionic systems engineering and to the processes of Thales.
 All the above points to the fact that, if the tools can be tailored, the process
 itself should be tailorable.
 
-In this paper, we propose precisely an approach to develop DS(M)Ls in JetBrains'
-MPS, \emph{equipped with a means to customize the tool in order to support a
-given process:} using out approach, in addition to the usual MPS mechanisms to
-develop their DSLs, developers can also explicitly express their own process.
-Such a process of model construction is expressed declaratively as a
-statechart-like diagram, being that the current state is defined by the
-satisfaction of some properties of the model as well as by its previous states.
-For each state, the tool developer can define hints to be displayed as well as
-quickfixes in the form of creation of new artifacts.
+In this paper we propose a framework to add process awareness to model-driven
+development environments. We first define the framework by introducing its
+conceptual bricks: the \emph{constraints}, the \emph{objectives} and the
+\emph{process}. Constraints are predicates that evaluate certain properties of a
+model. Constraints are grouped into \emph{objectives}, which constitute tasks
+that should be achieved by the modeller. The \emph{process} provides the means
+to order such objectives in terms of their inter-dependencies.
+
+We then go on to instanciate this framework in two concrete model-driven
+development environments: MPS and AF3.
 
 In order to clarify our work we draw an analogy with the M-levels defined by the Object Management Group:
 \begin{itemize}
@@ -85,22 +86,6 @@ in developing a \emph{process-aware} domain-specific tool.
 In particular we have implemented a so-called \textsf{Process} language for
 describing a set of refinement steps including descriptions which are then used to guide and help the user.
 At the M1 level, a ``dashboard'' allows the user to know permanently the next step to achieve.
-
-As a case study, we demonstrate how to use this framework for the
-specific domain of requirements engineering: the step-by-step formalization of requirements is a common approach,
-making it, therefore, an ideal candidate for the development of a process-aware tool.
-For this purpose, we have implemented a set of DSLs supporting the MIRA
-\cite{MIRA13} framework, a general approach for the stepwise formalization of requirements
-focusing on quality assurance for requirements.
-
-A \emph{tool developer} willing to implement their own requirements-engineering
-tool can use this set of DSLs as a basis for their model-based development
-environment, by composing them with more specific DSLs of their own design.
-They can also ``drive'' the user in their requirements formalization process by
-implementing a dedicated process using our \textsf{Process} language.
-We illustrate this approach by developing a requirements-engineering tool
-specialized in the development of hardware cooling systems, inspired
-from a case study coming from our industrial partners at Diehl Aerospace.\\
 
 % The remainder of this paper is structured as follows.  In
 % section~\ref{sec:metameta} we describe the MPS framework, which we use as the
