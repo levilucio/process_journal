@@ -2,31 +2,41 @@
 
 \subsection{\doone\ in \afthree}
 
-The standard \doone~\cite{do178c} is the primary document by which the certification authorities approve all commercial software-based aerospace systems.
+The \doone\ standard~\cite{do178c} is the primary document by which certification authorities approve all commercial software-based aerospace systems.
 It requires a thorough definition and documentation of the software development process. 
-The base set of required documentation and life cycle artifacts includes software requirements standard, software design standard and traceability.
-\dothree\ supplements \doone\ with model-based development guidance.
-The process described in this section guides the users (requirement engineer and architect) to generate models (requirements and their corresponding design) to fulfill some of the standards imposed by \doone\ and \dothree.
+The base set of required documentation includes requirements and design standards and traceability.
+The \dothree\ standard supplements \doone\ with model-based development guidance.
+Both standards define what needs to be done (the objectives that the project must fulfill), but not how to do so.
+For each project, a process and the documentation on how the objectives are achieved must be created.
+We describe one such process and show how it can be modeled in \afthree.
+The process guides the requirement engineer and the architect to generate requirements and their corresponding design to fulfill some of the standards imposed by \doone\ and \dothree.
 
-Good requirements standards should guarantee that the requirements information (ID, name, description, rationale, author, etc) is complete.
-Also, HLRs should be traceable to SRs.
-Once requirements are completed, they need to be reviewed (by someone which did not participate in their development).
-According to \dothree, artifacts and communication channels should have meaningful names, ports should have a type and a range, etc.
-\doone\ also imposes traceability between design and HLR.
-This allows to guarantee e.g. that every HLR is implemented.
+The following objectives are defined by the standards.
+Requirements standards normally impose that the information about requirements (ID, name, description, rationale, author, etc) is complete.
+Traceability requires that every HLR can be backtracked to a SRs.
+Once HLRs are defined, they need to be reviewed and approved by someone which did not participate in their development. 
+The latter guarantees verification independence~\cite{cast26} which must be clearly documented.
+Design standards specify that artifacts and their communication channels should have meaningful names, ports should have a type and a range, etc.
+Traceability also requires that every artifact in the design is traced to a HLR.
 
-We show how the process described above can be implemented in \afthree\ using constraints.
+We show how the objectives mentioned above are achieved following our proposed development process.
+Objectives are implemented in \afthree\ using constraints.
 The first objective is to add requirements to the project. 
 Once this is done, two objectives become possible and can be performed in any order. 
-\emph{Requirements information complete} assures that the ID, name, description, rationale, author and source (SR from where this requirement is derived) fields are completed. 
-The latter defines a trace between HLRs and SRs.
-\emph{Requirements have an unique aspect} guides the engineer to split a requirement when it focus on more than a particular aspect.
-Consider a requirement `\emph{the value of $o_1$ should be computed as $i_1$ in less than time units}'.
-This requirement contains a functional aspect (how to compute the value of $o_1$) and a timing aspect (how fast this should be computed).
-We believe it is good practice to have both as separated requirements; the process guide the user to do so.
+\emph{Requirements' information is complete} assures that the ID, name, description, rationale, author and source (SR from where this requirement is derived) fields are completed. 
+The latter defines traces between HLRs and SRs.
+\emph{Requirements have an unique aspect} guides the engineer to refine a requirement when it focus on more than a particular aspect e.g. a functional and a timing one.
+This is not imposed by the standards, but it is good practice to have both as separated requirements.
+The next objective is \emph{every requirement is approved}, which assures that requirements have been checked before the design phase starts.
+Verification independence can be easily imposed by only allowing other user to mark requirements are approved.
+
+The design phase starts when some artifact is added to the project.
+The following objective is to add traces (as required by \doone) from the design to the HLRs.
+Traces allow to automatically check two independent objectives.
+\emph{Completeness} checks that for every HLR, there exists a trace from an artifact to it, i.e. every requirement is implemented.
+\emph{Correctness} assures that every artifact has been marked as correctly implemented.
+Currently, this needs to be manually done in \afthree, but this could be automatized by checking that an artifact passes all its test cases.
 
 \subsection{IETS3 in MPS}
-\label{sec:meta}
-\input{text/iets3_in_mps}
 
 \subsection{Assurance cases in AF3}
